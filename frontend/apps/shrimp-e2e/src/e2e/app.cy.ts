@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('angular-store-e2e', () => {
+describe('shrimp-e2e', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
