@@ -1,0 +1,11 @@
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="over">
+    <h1>My App</h1>
+    <!-- <app-nav-list></app-nav-list> -->
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <lib-ui-header (drawerToggle)="drawer.toggle()"></lib-ui-header>
+    <!-- <app-content></app-content> -->
+  </div>
+</mat-drawer-container>

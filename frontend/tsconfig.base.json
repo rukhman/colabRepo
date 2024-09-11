@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-monorepo/feature-events": ["libs/feature-events/src/index.ts"]
+      "@angular-monorepo/feature-events": [
+        "libs/events/feature-events/src/index.ts"
+      ],
+      "@angular-monorepo/ui-header": ["libs/core/header/ui-header/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

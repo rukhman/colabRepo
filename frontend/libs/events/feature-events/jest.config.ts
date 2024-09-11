@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
   displayName: 'feature-events',
-  preset: '../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/libs/feature-events',
+  coverageDirectory: '../../../coverage/libs/feature-events',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
