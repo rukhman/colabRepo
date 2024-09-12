@@ -1,0 +1,23 @@
+.content {
+  display: block;
+  height: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  max-height: 91vh;
+  overflow: scroll;
+}
+
+mat-grid-tile {
+  background: lightblue;
+}
+
+.viewport {
+  height: 90vh;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.item {
+  height: 50px;
+}
