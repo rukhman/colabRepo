@@ -21,5 +21,5 @@ import { NavListComponent } from './components/nav-list/nav-list.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'ross';
+  title = 'Shrimp';
 }
