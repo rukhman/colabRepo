@@ -7,7 +7,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'lib-ui-header',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, MatToolbarModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+  ],
   templateUrl: './ui-header.component.html',
   styleUrl: './ui-header.component.css',
 })
