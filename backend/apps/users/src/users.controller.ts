@@ -8,37 +8,25 @@ export class UsersController implements UsersServiceController {
   constructor(private readonly usersService: UsersService) {}
 
   @GrpcMethod("UsersService", "CreateUser")
-  createUser(createUserDto: CreateUserDto): User {
-    return {
-      id: "1",
-      name: null,
-      email: null,
-      password: null,
-      role: "penis"
-    }
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    return await this.usersService.createUser(createUserDto);
   }
   
   @GrpcMethod("UsersService", "GetUsers")
-  getUsers(): Users {
-    return {Users: [{
-      id: "все работает, я просто охуенен",
-      name: "жаль не дотягиваюсь до члена",
-      email: "сделал бы себе минет",
-      password: null,
-      role: null,
-    }]};
+  async getUsers(): Promise<Users> {
+    return await this.usersService.getUsers();
   }
   @GrpcMethod("UsersService", "GetUser")
-  getUser(getUserDto: GetUserDto): User {
-    return null;
+  async getUser(getUserDto: GetUserDto): Promise<User> {
+    return await this.usersService.getUser(getUserDto);
   }
   @GrpcMethod("UsersService", "EditUser")
-  editUser(editUserDto: EditUserDto): User {
-    return null;
+  async editUser(editUserDto: EditUserDto): Promise<User> {
+    return await this.usersService.editUser(editUserDto);
   }
   @GrpcMethod("UsersService", "DeleteUser")
-  deleteUser(deleteUser: DeleteUserDto): User {
-    return null;
+  async deleteUser(deleteUserDto: DeleteUserDto): Promise<User> {
+    return await this.usersService.deleteUser(deleteUserDto);
   }
 
 }

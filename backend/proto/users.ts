@@ -33,6 +33,7 @@ export interface EditUserDto {
   name: string;
   email: string;
   password: string;
+  role: string;
 }
 
 export interface GetUserDto {
