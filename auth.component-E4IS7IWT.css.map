@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/auth/auth.component.scss"],
+  "sourcesContent": [".auth-header {\n  margin-bottom: 30px;\n}\n\n.items {\n  display: flex;\n  justify-content: space-around;\n  .item {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 30%;\n    overflow: hidden;\n  }\n}\n\n.back {\n  margin-top: 10px;\n  margin-bottom: 30px;\n}\n"],
+  "mappings": "AAAA,CAAA,YACE,cAAA,KAGF,CAAA,MACE,QAAA,KACA,gBAAA,aACA,CAHF,MAGE,CAAA,KACE,QAAA,KACA,gBAAA,OACA,YAAA,OACA,MAAA,IACA,SAAA,OAIJ,CAAA,KACE,WAAA,KACA,cAAA",
+  "names": []
+}

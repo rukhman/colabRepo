@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/content/content.component.scss"],
+  "sourcesContent": [".content {\n  display: block;\n  height: 100%;\n  padding-left: 5px;\n  padding-right: 5px;\n  max-height: 91vh;\n  overflow: scroll;\n}\n\nmat-grid-tile {\n  background: lightblue;\n}\n\n.viewport {\n  height: 90vh;\n  overflow: hidden;\n  width: 100%;\n  border: 1px solid black;\n}\n\n.item {\n  height: 50px;\n}\n"],
+  "mappings": "AAAA,CAAA,QACE,QAAA,MACA,OAAA,KACA,aAAA,IACA,cAAA,IACA,WAAA,KACA,SAAA,OAGF,cACE,WAAA,QAGF,CAAA,SACE,OAAA,KACA,SAAA,OACA,MAAA,KACA,OAAA,IAAA,MAAA,MAGF,CAAA,KACE,OAAA",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.scss"],
+  "sourcesContent": [".container {\n  width: 100vw;\n  height: 100vh;\n  border: 1px solid rgba(0, 0, 0, 0.5);\n}\n\n.sidenav {\n  padding: 20px;\n}\n\n.sidenav-content {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n"],
+  "mappings": "AAAA,CAAA,UACE,MAAA,MACA,OAAA,MACA,OAAA,IAAA,MAAA,KAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,IAGF,CAAA,QANA,QAOE,KAGF,CAAA,gBACE,aAAA,KACA,cAAA",
+  "names": []
+}
