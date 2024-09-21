@@ -1,1 +1,16 @@
-<p>auth works!</p>
+<app-back class="back" [routerLink]="['/']"></app-back>
+<div class="auth-content">
+  <h3 mat-subheader class="auth-header">Вход/Регистрация:</h3>
+  <ul class="items">
+    @for (service of services; track service) {
+    <li class="item">
+      <button (click)="service.handler()" color="accent" mat-flat-button>
+        <svg-icon
+          [src]="service.path"
+          [svgStyle]="{ 'width.px': 90 }"
+        ></svg-icon>
+      </button>
+    </li>
+    }
+  </ul>
+</div>

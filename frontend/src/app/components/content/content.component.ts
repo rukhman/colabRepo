@@ -3,11 +3,7 @@ import { Component } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  LayoutModule,
-} from '@angular/cdk/layout';
+import { LayoutModule } from '@angular/cdk/layout';
 import { ScreenService } from '../../shared/services/screen.service';
 
 @Component({

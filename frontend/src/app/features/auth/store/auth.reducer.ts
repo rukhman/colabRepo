@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { saveJWTTocken } from './auth.actions';
 
-interface InitialState {
+export interface AuthState {
   JWTTocken: number | null;
 }
 
-export const initialState: InitialState = {
+export const initialState: AuthState = {
   JWTTocken: null,
 };
 

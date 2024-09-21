@@ -1,24 +1,14 @@
 <mat-toolbar>
-  <span>Shrimp</span>
+  <span [routerLink]="['/']">Shrimp</span>
   <span class="spacer"></span>
-  <button mat-raised-button>
+  <a
+    *ngIf="!(route$ | async)?.includes('auth')"
+    [routerLink]="['auth']"
+    mat-raised-button
+  >
     <mat-icon>person</mat-icon>
     Вход
-  </button>
-  <button
-    mat-icon-button
-    class="icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
+  </a>
   <button
     mat-icon-button
     class="icon"

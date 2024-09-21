@@ -1,0 +1,20 @@
+.auth-header {
+  margin-bottom: 30px;
+}
+
+.items {
+  display: flex;
+  justify-content: space-around;
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    overflow: hidden;
+  }
+}
+
+.back {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
