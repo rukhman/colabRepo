@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
-import { CreateUserDto, EditUserDto, USERS_SERVICE_NAME, UsersServiceClient } from 'proto/users';
+import { CreateUserDto, EditUserDto, GetUserByEmailDto, USERS_SERVICE_NAME, UsersServiceClient } from 'proto/users';
 // import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
@@ -25,6 +25,10 @@ export class UsersService implements OnModuleInit{
 
   findOne(id: string) {
     return this.usersServiceClient.getUser({id});
+  }
+
+  findOneEmail(getUserByEmailDto: GetUserByEmailDto) {
+    return this.usersServiceClient.getUserByEmail(getUserByEmailDto);
   }
 
   update(updateUserDto: EditUserDto) {

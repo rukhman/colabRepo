@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { User as UserModel} from './db/models/users.model';
-import { CreateUserDto, DeleteUserDto, EditUserDto, GetUserDto, User, Users} from "proto/users"
+import { User as UserModel} from "../../../database/models/users.model"
+import { CreateUserDto, DeleteUserDto, EditUserDto, GetUserByEmailDto, GetUserDto, User, Users} from "proto/users"
 import { InjectModel } from '@nestjs/sequelize';
 
 const convertToProtoUser = (user: UserModel)  => {
@@ -10,6 +10,8 @@ const convertToProtoUser = (user: UserModel)  => {
     "email": user.email,
     "password": user.password,
     "role": user.role,
+    "isActivated": user.isActivated,
+    "activationLink": user.activationLink,
   }
 };
 
@@ -19,7 +21,7 @@ export class UsersService {
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     try {
-      const user = await this.userModel.create({...createUserDto, role: "dolboyob"});
+      const user = await this.userModel.create({...createUserDto, role: "dolboyob", activationLink: "penis"});
       return convertToProtoUser(user);
     } catch (e) {
       return e;
@@ -40,6 +42,15 @@ export class UsersService {
   async getUser(getUserDto: GetUserDto): Promise<User> {
     try {
       const user = await this.userModel.findOne({where: {id: getUserDto.id}});
+      return convertToProtoUser(user);
+    } catch (e) {
+      return e;
+    }
+  }
+
+  async getUserByEmail(getUserByEmailDto: GetUserByEmailDto): Promise<User> {
+    try {
+      const user = await this.userModel.findOne({where: {email: getUserByEmailDto.email}});
       return convertToProtoUser(user);
     } catch (e) {
       return e;

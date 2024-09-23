@@ -16,16 +16,24 @@ export interface User {
   email: string;
   password: string;
   role: string;
+  isActivated: boolean;
+  activationLink: string;
 }
 
 export interface Users {
   Users: User[];
 }
 
+export interface GetUserByEmailDto {
+  email: string;
+}
+
 export interface CreateUserDto {
   name: string;
   email: string;
   password: string;
+  role: string;
+  activationLink: string;
 }
 
 export interface EditUserDto {
@@ -34,6 +42,8 @@ export interface EditUserDto {
   email: string;
   password: string;
   role: string;
+  isActivated: boolean;
+  activationLink: string;
 }
 
 export interface GetUserDto {
@@ -56,6 +66,8 @@ export interface UsersServiceClient {
 
   getUser(request: GetUserDto): Observable<User>;
 
+  getUserByEmail(request: GetUserByEmailDto): Observable<User>;
+
   editUser(request: EditUserDto): Observable<User>;
 
   deleteUser(request: DeleteUserDto): Observable<User>;
@@ -68,6 +80,8 @@ export interface UsersServiceController {
 
   getUser(request: GetUserDto): Promise<User> | Observable<User> | User;
 
+  getUserByEmail(request: GetUserByEmailDto): Promise<User> | Observable<User> | User;
+
   editUser(request: EditUserDto): Promise<User> | Observable<User> | User;
 
   deleteUser(request: DeleteUserDto): Promise<User> | Observable<User> | User;
@@ -75,7 +89,7 @@ export interface UsersServiceController {
 
 export function UsersServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["createUser", "getUsers", "getUser", "editUser", "deleteUser"];
+    const grpcMethods: string[] = ["createUser", "getUsers", "getUser", "getUserByEmail", "editUser", "deleteUser"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("UsersService", method)(constructor.prototype[method], method, descriptor);

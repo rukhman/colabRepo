@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { GrpcMethod } from '@nestjs/microservices';
-import { CreateUserDto, DeleteUserDto, EditUserDto, GetUserDto, User, Users, UsersServiceController } from 'proto/users';
+import { CreateUserDto, DeleteUserDto, EditUserDto, GetUserByEmailDto, GetUserDto, User, Users, UsersServiceController } from 'proto/users';
 
 @Controller()
 export class UsersController implements UsersServiceController {
@@ -19,6 +19,10 @@ export class UsersController implements UsersServiceController {
   @GrpcMethod("UsersService", "GetUser")
   async getUser(getUserDto: GetUserDto): Promise<User> {
     return await this.usersService.getUser(getUserDto);
+  }
+  @GrpcMethod("UsersService", "GetUserByEmail")
+  async getUserByEmail(getUserByEmailDto: GetUserByEmailDto): Promise<User> {
+    return await this.usersService.getUserByEmail(getUserByEmailDto);
   }
   @GrpcMethod("UsersService", "EditUser")
   async editUser(editUserDto: EditUserDto): Promise<User> {
