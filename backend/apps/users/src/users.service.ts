@@ -21,7 +21,7 @@ export class UsersService {
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     try {
-      const user = await this.userModel.create({...createUserDto, role: "dolboyob", activationLink: "penis"});
+      const user = await this.userModel.create({...createUserDto});
       return convertToProtoUser(user);
     } catch (e) {
       return e;
