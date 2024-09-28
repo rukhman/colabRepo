@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
-import { AUTH_SERVICE_NAME, AuthServiceClient, LogoutDto, RefreshDto, RegLogDto } from 'proto/auth';
+import { ActivateDto, AUTH_SERVICE_NAME, AuthServiceClient, LogoutDto, RefreshDto, RegLogDto } from 'proto/auth';
 
 @Injectable()
 export class AuthService implements OnModuleInit{
@@ -28,5 +28,9 @@ export class AuthService implements OnModuleInit{
 
   refresh(refreshDto: RefreshDto) {
     return this.authServiceClient.refresh(refreshDto);
+  }
+
+  async activate(activateDto: ActivateDto) {
+    return await this.authServiceClient.activate(activateDto).toPromise();
   }
 }

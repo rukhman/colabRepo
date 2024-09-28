@@ -11,10 +11,22 @@ import { JwtService } from '@nestjs/jwt';
 import { dbProvider } from '../../../database/db.provider';
 import { Token } from '../../../database/models/tokens.model';
 import { User } from 'database/models/users.model';
+import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
+    MailerModule.forRoot({
+      transport: {
+        host: process.env.SMTP_HOST,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD
+        }
+      }
+    }),
     dbProvider,
     SequelizeModule.forFeature([Token, User]),
   ],

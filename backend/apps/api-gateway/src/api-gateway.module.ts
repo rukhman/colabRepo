@@ -6,7 +6,13 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UsersModule, AuthModule],
+  imports: [
+    UsersModule, 
+    AuthModule,
+    ConfigModule.forRoot({
+      envFilePath: ".env"
+    })
+  ],
   controllers: [ApiGatewayController],
   providers: [ApiGatewayService],
 })

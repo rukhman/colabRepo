@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
 import { InjectModel } from '@nestjs/sequelize';
-import { LogoutDto, RefreshDto, RegLogDto, Tokens } from 'proto/auth';
+import { ActivateDto, LogoutDto, RefreshDto, RegLogDto, Tokens } from 'proto/auth';
 import { CreateUserDto, USERS_SERVICE_NAME, UsersServiceClient } from 'proto/users';
 import * as bcrypt from "bcrypt";
 import {v4 as uuid} from "uuid";
@@ -14,8 +14,7 @@ import { User } from 'database/models/users.model';
 @Injectable()
 export class AuthService{
 
-  constructor(private mailService: MailService, private tokenService: TokensService, 
-    ) {}
+  constructor(private mailService: MailService, private tokenService: TokensService){}
 
   async registration(registrationDto: RegLogDto) {
     const res = await fetch(`http://localhost:3000/users/email?email=${registrationDto.email}`);
@@ -35,7 +34,7 @@ export class AuthService{
       body: JSON.stringify({...registrationDto, password: hashedPassword, name: registrationDto.email, role: "USER", activationLink})
     });
     const user = await createUserRes.json();
-    await this.mailService.sendActivationMail(registrationDto.email, activationLink);
+    await this.mailService.sendActivationMail(registrationDto.email, `${process.env.API_URL}/auth/activate/${activationLink}`);
 
 
     const userDto = new UserPayloadDto(user);
@@ -84,5 +83,27 @@ export class AuthService{
 
     await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
     return tokens;
+  }
+
+  async activate(activateDto: ActivateDto) {
+    const user = await User.findOne({where: {activationLink: activateDto.activationLink}});
+    if (!user) {
+      throw new Error("Некорректная ссылка активации");
+    }
+    await fetch("http://localhost:3000/users", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify({
+        id: user.dataValues.id,
+        name: user.dataValues.name,
+        email: user.dataValues.email,
+        password: user.dataValues.password,
+        role: user.dataValues.role,
+        activationLink: user.dataValues.activationLink,
+        isActivated: true})
+    });
   }
 }

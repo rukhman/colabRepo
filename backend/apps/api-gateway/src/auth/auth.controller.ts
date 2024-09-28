@@ -59,8 +59,9 @@ export class AuthController {
     return tokensRes;
   }
 
-  // @Get(':id')
-  // activate(@Param('id') id: string) {
-  //   // return this.authService.update(+id, updateAuthDto);
-  // }
+  @Get('activate/:link')
+  async activate(@Param('link') link: string, @Res({passthrough: true}) res: Response) {
+    await this.authService.activate({activationLink: link});
+    return res.redirect(process.env.CLIENT_URL); //ссылка на главную страницу сайта
+  }
 }

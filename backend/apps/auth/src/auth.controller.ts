@@ -24,7 +24,7 @@ export class AuthController implements AuthServiceController{
 
   @GrpcMethod("AuthService", "Activate")
   async activate(activateDto: ActivateDto) {
-    // return await this.authService.registration(activateDto);
+    return await this.authService.activate(activateDto);
   }
 
   @GrpcMethod("AuthService", "Refresh")
