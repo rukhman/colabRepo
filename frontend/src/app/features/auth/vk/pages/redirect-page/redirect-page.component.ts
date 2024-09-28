@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import * as VKID from '@vkid/sdk';
-// import { initVKConfig } from '../../services/vk.config';
-
+// @ts-ignore
+const VKID = window.VKIDSDK;
 @Component({
   selector: 'app-redirect-page',
   standalone: true,
@@ -17,9 +16,9 @@ export class RedirectPageComponent implements OnInit {
     console.log(this.route.snapshot.queryParams['code']);
     console.log(this.route.snapshot.queryParams['device_id']);
     // initVKConfig();
-    // VKID.Auth.exchangeCode(
-    //   this.route.snapshot.queryParams['code'],
-    //   this.route.snapshot.queryParams['device_id']
-    // );
+    VKID.Auth.exchangeCode(
+      this.route.snapshot.queryParams['code'],
+      this.route.snapshot.queryParams['device_id']
+    );
   }
 }
