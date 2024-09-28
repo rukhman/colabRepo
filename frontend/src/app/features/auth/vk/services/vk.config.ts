@@ -14,4 +14,5 @@ export const initVKConfig = () => {
     __debug: true,
   });
   console.log(init);
+  console.log(VKID.Auth);
 };
