@@ -1,3 +1,3 @@
 export const environment = {
-  redirectUrl: 'https://rukhman.github.io/colabRepo/',
+  redirectUrl: 'https://shrimpy.netlify.app/',
 };
