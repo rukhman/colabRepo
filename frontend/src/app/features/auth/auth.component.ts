@@ -28,9 +28,7 @@ export class AuthComponent {
       path: 'assets/icons/vk.svg',
       handler: () => {
         initVKConfig();
-        setTimeout(() => {
-          VKID.Auth.login();
-        }, 2000);
+        VKID.Auth.login();
       },
     },
     {
