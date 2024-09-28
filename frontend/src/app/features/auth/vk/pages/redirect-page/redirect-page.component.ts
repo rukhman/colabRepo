@@ -14,8 +14,6 @@ export class RedirectPageComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     console.log(this.route.snapshot.queryParams);
-
-    initVKConfig();
     VKID.Auth.exchangeCode(
       this.route.snapshot.queryParams['code'],
       this.route.snapshot.queryParams['device_id']

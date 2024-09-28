@@ -7,6 +7,7 @@ import { ContentComponent } from './components/content/content.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 import { AuthComponent } from './features/auth/auth.component';
 import { environment } from '../environments/environment';
+import { initVKConfig } from './features/auth/vk/services/vk.config';
 
 @Component({
   selector: 'app-root',
@@ -28,5 +29,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     console.log(isDevMode());
     console.log(environment.redirectUrl);
+    initVKConfig();
   }
 }
