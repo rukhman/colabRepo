@@ -29,6 +29,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     console.log(isDevMode());
     console.log(environment.redirectUrl);
-    initVKConfig();
+    // initVKConfig();
   }
 }

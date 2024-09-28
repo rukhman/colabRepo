@@ -9,8 +9,8 @@ export const initVKConfig = () => {
     state: 'dj29fnsadjsd82', // Произвольная строка состояния приложения.
     codeVerifier: 'FGH767Gd65', // Верификатор в виде случайной строки. Обеспечивает защиту передаваемых данных.
     scope: 'email phone', // Список прав доступа, которые нужны приложению.
-    mode: VKID.ConfigAuthMode.InNewTab, // По умолчанию авторизация открывается в новой вкладке.
-    // mode: VKID.ConfigAuthMode.Redirect, // По умолчанию авторизация открывается в новой вкладке.
+    // mode: VKID.ConfigAuthMode.InNewTab, // По умолчанию авторизация открывается в новой вкладке.
+    mode: VKID.ConfigAuthMode.Redirect, // По умолчанию авторизация открывается в новой вкладке.
     __debug: true,
   });
   console.log(init);
