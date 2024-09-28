@@ -4,12 +4,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthApiService {
+export class VKAuthApiService {
   base = 'http://localhost:4200/';
-
+  // @ts-ignore
+  // vksdk = window['VKIDSDK'];
   constructor(private http: HttpClient) {}
 
-  vkAuth() {
-
-  }
+  vkAuth() {}
 }

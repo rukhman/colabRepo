@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { MatButtonModule } from '@angular/material/button';
-import * as VKID from '@vkid/sdk';
-import { initVKConfig } from './vk/services/vk.config';
+// @ts-ignore
+const VKID = window.VKIDSDK;
 
 @Component({
   selector: 'app-auth',

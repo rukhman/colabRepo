@@ -27,8 +27,8 @@ import { initVKConfig } from './features/auth/vk/services/vk.config';
 export class AppComponent implements OnInit {
   title = 'Shrimp';
   ngOnInit(): void {
-    console.log(isDevMode());
-    console.log(environment.redirectUrl);
+    // @ts-ignore
+    console.log(window['VKIDSDK']);
     initVKConfig();
   }
 }
