@@ -13,6 +13,4 @@ export const initVKConfig = () => {
     mode: VKID.ConfigAuthMode.Redirect, // По умолчанию авторизация открывается в новой вкладке.
     __debug: true,
   });
-  console.log(init);
-  console.log(VKID.Auth);
 };
