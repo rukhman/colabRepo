@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && cp -f _redirects dist/ross/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/colabRepo/ & angular-cli-ghpages --dir=dist/ross/browser"
+    "deploy:gh": "ng deploy --base-href=/colabRepo/ & angular-cli-ghpages --dir=dist/ross/browser"
   },
   "private": true,
   "dependencies": {
