@@ -16,6 +16,7 @@ export class RedirectPageComponent implements OnInit {
     console.log(this.route.snapshot.queryParams);
     console.log(this.route.snapshot.queryParams['code']);
     console.log(this.route.snapshot.queryParams['device_id']);
+    initVKConfig();
     VKID.Auth.exchangeCode(
       this.route.snapshot.queryParams['code'],
       this.route.snapshot.queryParams['device_id']
