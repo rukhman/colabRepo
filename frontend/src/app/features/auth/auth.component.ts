@@ -27,7 +27,10 @@ export class AuthComponent {
       fullName: 'ВКонтакте',
       path: 'assets/icons/vk.svg',
       handler: () => {
-        VKID.Auth.login();
+        initVKConfig();
+        setTimeout(() => {
+          VKID.Auth.login();
+        }, 2000);
       },
     },
     {
