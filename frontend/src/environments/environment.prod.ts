@@ -1,3 +1,3 @@
 export const environment = {
-  redirectUrl: 'https://shrimpy.netlify.app/',
+  redirectUrl: 'https://shrimpy.netlify.app/redirect-auth/',
 };
