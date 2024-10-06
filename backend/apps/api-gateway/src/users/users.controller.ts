@@ -1,12 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, Query, UseInterceptors } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto, EditUserDto, GetUserByEmailDto } from 'proto/users';
 import { ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserDTO } from './dtos/create-user.dto';
 import { UserResponseDTO } from './dtos/responses/user-response.dto';
 import { UpdateUserDTO } from './dtos/update-user.dto';
+import { GrpcToHttpInterceptor } from 'nestjs-grpc-exceptions';
 
 @ApiTags("users")
+@UseInterceptors(GrpcToHttpInterceptor)
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

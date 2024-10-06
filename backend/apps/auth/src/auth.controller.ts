@@ -1,10 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Inject, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { GrpcMethod } from '@nestjs/microservices';
-import { ActivateDto, AuthServiceController, LogoutDto, RefreshDto, RefreshToken, RegLogDto, Tokens } from 'proto/auth';
+import { ActivateDto, AuthServiceController, Empty, LogoutDto, RefreshDto, RefreshToken, RegLogDto, Tokens, YandexDto } from 'proto/auth';
 
 @Controller()
 export class AuthController implements AuthServiceController{
+
   constructor(private readonly authService: AuthService) {}
 
   @GrpcMethod("AuthService", "Registration")
@@ -30,5 +31,11 @@ export class AuthController implements AuthServiceController{
   @GrpcMethod("AuthService", "Refresh")
   async refresh(refreshDto: RefreshDto): Promise<Tokens> {
     return await this.authService.refresh(refreshDto);
+  }
+
+  
+  @GrpcMethod("AuthService", "Yandex")
+  async yandex(yandexDto: YandexDto): Promise<Tokens> {
+    return await this.authService.yandex(yandexDto);
   }
 }

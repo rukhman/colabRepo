@@ -10,6 +10,10 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "auth";
 
+export interface YandexDto {
+  accessToken: string;
+}
+
 export interface RefreshToken {
   refreshToken: string;
 }
@@ -51,6 +55,8 @@ export interface AuthServiceClient {
   activate(request: ActivateDto): Observable<Empty>;
 
   refresh(request: RefreshDto): Observable<Tokens>;
+
+  yandex(request: YandexDto): Observable<Tokens>;
 }
 
 export interface AuthServiceController {
@@ -63,11 +69,13 @@ export interface AuthServiceController {
   activate(request: ActivateDto): Promise<Empty> | Observable<Empty> | Empty;
 
   refresh(request: RefreshDto): Promise<Tokens> | Observable<Tokens> | Tokens;
+
+  yandex(request: YandexDto): Promise<Tokens> | Observable<Tokens> | Tokens;
 }
 
 export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["registration", "login", "logout", "activate", "refresh"];
+    const grpcMethods: string[] = ["registration", "login", "logout", "activate", "refresh", "yandex"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("AuthService", method)(constructor.prototype[method], method, descriptor);

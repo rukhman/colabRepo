@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res, Req, UsePipes, UseFilters, HttpException, UseInterceptors, UseGuards, Request as RequestNest } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegLogDto, Tokens } from 'proto/auth';
 import { Request, Response } from 'express';
@@ -6,12 +6,18 @@ import { ApiExcludeController, ApiOperation, ApiProperty, ApiResponse, ApiTags }
 import { TokensResponseDTO } from './dtos/responses/tokens-response.dto';
 import { RegLogDTO } from './dtos/reg-log.dto';
 import { RefreshTokenResponseDTO } from './dtos/responses/refreshToken-response.dto';
+import { ValidationPipe } from '../pipes/validation.pipe';
+import { GrpcToHttpInterceptor } from 'nestjs-grpc-exceptions';
+import { AuthGuard } from '@nestjs/passport';
+import { YandexDTO } from './dtos/yandex.dto';
 
 @ApiTags("auth")
+@UseInterceptors(GrpcToHttpInterceptor)
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @UsePipes(ValidationPipe)
   @ApiOperation({summary: "Регистрация нового пользователя"})
   @ApiResponse({status: 201, type: TokensResponseDTO, description: "refreshToken сохраняется в cookies"})
   @Post("registration")
@@ -24,6 +30,7 @@ export class AuthController {
     return tokensRes;
   }
 
+  @UsePipes(ValidationPipe)
   @ApiOperation({summary: "Логин пользователя"})
   @ApiResponse({status: 200, type: TokensResponseDTO, description: "refreshToken сохраняется в cookies"})
   @Post("login")
@@ -63,5 +70,10 @@ export class AuthController {
   async activate(@Param('link') link: string, @Res({passthrough: true}) res: Response) {
     await this.authService.activate({activationLink: link});
     return res.redirect(process.env.CLIENT_URL); //ссылка на главную страницу сайта
+  }
+
+  @Post('yandex')
+  yandex(@Body() yandexDto: YandexDTO) {
+    return this.authService.yandex(yandexDto);
   }
 }

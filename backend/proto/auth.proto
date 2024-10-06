@@ -8,6 +8,11 @@ service AuthService {
     rpc Logout (LogoutDto) returns (RefreshToken) {}
     rpc Activate (ActivateDto) returns (Empty) {}
     rpc Refresh (RefreshDto) returns (Tokens) {}
+    rpc Yandex (YandexDto) returns (Tokens) {}
+}
+
+message YandexDto {
+    string accessToken = 1;
 }
 
 message RefreshToken {

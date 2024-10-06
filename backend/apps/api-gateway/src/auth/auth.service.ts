@@ -33,4 +33,8 @@ export class AuthService implements OnModuleInit{
   async activate(activateDto: ActivateDto) {
     return await this.authServiceClient.activate(activateDto).toPromise();
   }
+
+  yandex(yandexDto) {
+    return this.authServiceClient.yandex(yandexDto);
+  }
 }

@@ -12,6 +12,8 @@ import { dbProvider } from '../../../database/db.provider';
 import { Token } from '../../../database/models/tokens.model';
 import { User } from 'database/models/users.model';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { APP_FILTER } from '@nestjs/core';
+import { GrpcServerExceptionFilter } from 'nestjs-grpc-exceptions';
 
 @Module({
   imports: [
@@ -31,6 +33,11 @@ import { MailerModule } from '@nestjs-modules/mailer';
     SequelizeModule.forFeature([Token, User]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, TokensService, MailService, JwtService],
+  providers: [AuthService, TokensService, MailService, JwtService,
+    {
+      provide: APP_FILTER,
+      useClass: GrpcServerExceptionFilter,
+    }
+  ],
 })
 export class AuthModule {}
