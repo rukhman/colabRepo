@@ -6,8 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class VKAuthApiService {
   base = 'http://localhost:4200/';
-  // @ts-ignore
-  // vksdk = window['VKIDSDK'];
   constructor(private http: HttpClient) {}
 
   vkAuth() {}

@@ -6,7 +6,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { ContentComponent } from './components/content/content.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 import { AuthComponent } from './features/auth/auth.component';
-import { environment } from '../environments/environment';
 import { initVKConfig } from './features/auth/vk/services/vk.config';
 
 @Component({
@@ -27,8 +26,6 @@ import { initVKConfig } from './features/auth/vk/services/vk.config';
 export class AppComponent implements OnInit {
   title = 'Shrimp';
   ngOnInit(): void {
-    // @ts-ignore
-    console.log(window['VKIDSDK']);
     initVKConfig();
   }
 }
