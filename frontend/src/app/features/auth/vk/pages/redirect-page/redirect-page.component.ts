@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { initVKConfig } from '../../services/vk.config';
 import * as VKID from '@vkid/sdk';
 
 @Component({
